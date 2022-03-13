@@ -78,16 +78,38 @@ void fill_alloc(char *alloc_str, const char *str_base, int size_fill)
 
 int _printf(const char *format, ...)
 {
-	int size_initial = 0, final_size = 0;
-	char *string_formated = NULL;
+	int size_initial = 0, i = 0, final_size = 0;
+	char *str_formated = NULL;
+	void *tmp = NULL;
+	va_list args;
 
 	size_initial = _strlen(format);
 
-	string_formated = malloc(size_initial * sizeof(char));
-	final_size = size_initial;
-	fill_alloc(string_formated, format, size_initial);
+	str_formated = malloc(size_initial * sizeof(char));
 
-	print_all(string_formated, size_initial);
-	free(string_formated);
+	va_start(args, format);
+
+	for(i = 0; i < size_initial; i++)
+	{
+		if (str_formated[i] == '%')
+		{
+			if (str_formated[i + 1] != '%')
+			{
+				tmp = va_arg(args, void *);
+				/*elige una opcion (c, s, d, i)*/
+				choose_option(str_formated[i + 1])(str_formated, tmp);
+			}
+			else
+				continue;
+		}
+	}
+
+	va_end(args);
+
+	final_size = size_initial;
+	fill_alloc(str_formated, format, size_initial);
+
+	print_all(str_formated, size_initial);
+	free(str_formated);
 	return (final_size);
 }

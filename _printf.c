@@ -41,6 +41,30 @@ void print_all(char *string, unsigned int size)
 	write(1, "You must to enter an string (NOT NULL)", 39);
 }
 
+
+/**
+ * fill_malloc - Fill a string previously allocated.
+ *
+ * @allocated_string: Pointer to the spaces allocated.
+ *
+ * @string_base: A string with the format wished.
+ *
+ * @size_to_fill: quantity to fill the allocated string.
+ *
+ * Return: Void
+ */
+
+void fill_malloc(char *allocated_string, char *string_base, unsigned int size_to_fill)
+{
+	int i = 0;
+
+	while(i < size_to_fill)
+	{
+		allocated_string[i] = string_base[i];
+		i++;
+	}
+}
+
 /**
  * _printf - Produce output according to a format as described below.
  *

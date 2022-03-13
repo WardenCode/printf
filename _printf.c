@@ -17,7 +17,7 @@ int _strlen(const char *string)
 		while (string[size] != '\0')
 			size++;
 
-		return (size + 1);
+		return size;
 	}
 
 	write(1, "You must to enter an string (NOT NULL)", 39);
@@ -38,7 +38,7 @@ void print_all(void *string, int size)
 {
 	if (string && size >= 0)
 	{
-		write(1, string, (size - 1));
+		write(1, string, size);
 		return;
 	}
 

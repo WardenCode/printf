@@ -10,28 +10,16 @@
 
 int _printf(const char *format, ...)
 {
-	int i = 0, j = 0, final_size = 0;
+	int size_initial = 0, j = 0, final_size = 0;
 	char *string_formated = NULL;
 
-	/*Count the size of the format*/
-	for (i = 0; format[i] != '\0'; i++)
-		continue;
+	size_initial = _strlen(format);
 
-	/*create the space to the formated string*/
 	string_formated = malloc(i * sizeof(char));
-	final_size = i;
+	final_size = size_initial;
+    fill_malloc(string_formated, format, size_initial);
 
-	while(j < i)
-	{
-		string_formated[j] = format[j];
-		j++;
-	}
-
-	string_formated[i] = '\0';
-
-	write(1, string_formated, final_size);
-
-	/*print_all(string_formated);*/
+	print_all(string_formated, size_initial);
 	free(string_formated);
 	return (final_size);
 }

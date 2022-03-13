@@ -69,6 +69,61 @@ void fill_alloc(char *alloc_str, const char *str_base, int size_fill)
 }
 
 /**
+ * _strcmp - Compare a string with another
+ *
+ * @s1: string.
+ *
+ * @s2: string.
+ *
+ * Return: Void
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+	int i;
+	int result = 0;
+
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
+	{
+		if (s1[i] != s2[i])
+		{
+			result = s1[i] - s2[i];
+			break;
+		}
+	}
+
+	return (result);
+}
+
+/**
+ * @brief 
+ * 
+ * @param s 
+ * @return char(*)(char* a, void* b) 
+ */
+
+char (*choose_option(char *s))(char *a, void *b)
+{
+	special_chars_t options[] = {
+		{"d", concat_num},
+		{"c", concat_char},
+		{"s", concat_str},
+		{"i", concat_int},
+		{NULL, NULL}
+	};
+	int i = 0;
+
+	while (options[i].op)
+	{
+		if (_strcmp(options[i].op, s) == 0)
+			return(options[i].operation);
+		i++;
+	}
+	return (NULL);
+}
+
+
+/**
  * _printf - Produce output according to a format as described below.
  *
  * @format: A string with the format wished.
@@ -81,6 +136,7 @@ int _printf(const char *format, ...)
 	int size_initial = 0, i = 0, final_size = 0;
 	char *str_formated = NULL;
 	void *tmp = NULL;
+	char (*p)(char *, void *);
 	va_list args;
 
 	size_initial = _strlen(format);
@@ -95,9 +151,13 @@ int _printf(const char *format, ...)
 		{
 			if (str_formated[i + 1] != '%')
 			{
-				tmp = va_arg(args, void *);
-				/*elige una opcion (c, s, d, i)*/
-				choose_option(str_formated[i + 1])(str_formated, tmp);
+				p = choose_option(str_formated[i + 1]);
+				if (p)
+				{
+					tmp = va_arg(args, void *);
+					/*elige una opcion (c, s, d, i)*/
+					p(str_formated, tmp);
+				}
 			}
 			else
 				continue;

@@ -8,5 +8,7 @@
 
 int _putchar(char c);
 int _printf(const char *format, ...);
+int _strlen(char *string);
+void print_all(char *string, unsigned int size);
 
 #endif

@@ -1,6 +1,29 @@
 #include "main.h"
 
 /**
+ * _strlen - Returns the length of a string.
+ *
+ * @string: Pointer to a first letter of a string.
+ *
+ * Return: The length of an string
+ */
+
+int _strlen(char *string)
+{
+	int size = 0;
+	if (string)
+	{
+		while (string[size] != '\0')
+		size++;
+
+		return (size);
+	}
+
+	write(1, "You must to enter an string (NOT NULL)", 39);
+	return (-1);
+}
+
+/**
  * _printf - Produce output according to a format as described below.
  *
  * @format: A string with the format wished.

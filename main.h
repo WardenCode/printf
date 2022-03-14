@@ -4,7 +4,6 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * struct special_chars - Validate the special char (%?)

@@ -6,16 +6,32 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * struct special_chars - Validate the special char (%?)
+ *
+ * @op: A char with some option
+ *
+ * @operation: Pointer to the function that go to print
+ */
+
 typedef struct special_chars
 {
-    int op;
-    int (*operation)(va_list args);
+	int op;
+	int (*operation)(va_list args);
 } special_chars_t;
+
+/**
+ * struct print_operation - Contain and call the function to print
+ *
+ * @flag: A flag to validate if exitst a special char (%?).
+ *
+ * @print: function to print something.
+ */
 
 typedef struct print_operation
 {
-    int flag;
-    int (*print)(va_list args);
+	int flag;
+	int (*print)(va_list args);
 } print_operation_t;
 
 int _putchar(char c);

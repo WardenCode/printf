@@ -6,10 +6,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct special_chars
+{
+    int op;
+    int (*operation)(va_list args);
+} special_chars_t;
+
+typedef struct print_operation
+{
+    int flag;
+    int (*print)(va_list args);
+} print_operation_t;
+
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(const char *string);
-void print_all(void *string, int size);
-void fill_alloc(char *alloc_str, const char *str_base, int size_fill);
+int _strcmp(char *s1, char *s2);
+int count_number(int n);
+void print_number(int n);
+print_operation_t choose_option(char s);
+int print_num(va_list args);
+int print_char(va_list args);
+int print_str(va_list args);
+int print_int(va_list args);
+int print_percent(va_list args);
 
 #endif

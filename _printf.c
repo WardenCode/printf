@@ -17,7 +17,7 @@ int _strlen(const char *string)
 		while (string[size] != '\0')
 			size++;
 
-		return size;
+		return (size);
 	}
 
 	write(1, "You must to enter an string (NOT NULL)", 39);
@@ -25,48 +25,68 @@ int _strlen(const char *string)
 }
 
 /**
- * print_all - Print into the standard output an string
+ * _strcmp - Compare a string with another
  *
- * @string: pointer to the first letter of a string
+ * @s1: string.
  *
- * @size: Size of the string (count the null space)
+ * @s2: string.
  *
  * Return: Void
  */
 
-void print_all(void *string, int size)
+int _strcmp(char *s1, char *s2)
 {
-	if (string && size >= 0)
+	int i;
+	int result = 0;
+
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 	{
-		write(1, string, size);
-		return;
+		if (s1[i] != s2[i])
+		{
+			result = s1[i] - s2[i];
+			break;
+		}
 	}
 
-	write(1, "You must to enter an string (NOT NULL)", 39);
+	return (result);
 }
 
 /**
- * fill_alloc - Fill a string previously allocated.
+ * choose_option - Find if the flag match with an existence and
+ * give the correct function.
  *
- * @alloc_str: Pointer to the spaces allocated.
+ * @s: Character to pass
  *
- * @str_base: A string with the format wished.
- *
- * @size_fill: quantity to fill the allocated string.
- *
- * Return: Void
+ * Return: A print_operation struct with a flag (0 or 1
+ * and a function pointer or NULL.
  */
 
-void fill_alloc(char *alloc_str, const char *str_base, int size_fill)
+print_operation_t choose_option(char s)
 {
+	print_operation_t test = {0, NULL};
+	special_chars_t options[] = {
+		{'d', print_num},
+		{'c', print_char},
+		{'s', print_str},
+		{'i', print_int},
+		{'%', print_percent},
+		{'\0', NULL}
+	};
 	int i = 0;
 
-	while (i < size_fill)
+	while (options[i].op)
 	{
-		alloc_str[i] = str_base[i];
+		if (options[i].op == s)
+		{
+			test.flag = 1;
+			test.print = options[i].operation;
+			return (test);
+		}
 		i++;
 	}
+	return (test);
 }
+
 
 /**
  * _printf - Produce output according to a format as described below.
@@ -78,16 +98,32 @@ void fill_alloc(char *alloc_str, const char *str_base, int size_fill)
 
 int _printf(const char *format, ...)
 {
-	int size_initial = 0, final_size = 0;
-	char *string_formated = NULL;
+	int i = 0, counter = 0, plus = 0;
+	print_operation_t p = {0, NULL};
+	va_list args;
 
-	size_initial = _strlen(format);
+	if (!format)
+		write(1, "You must to enter an string (NOT NULL)", 39);
 
-	string_formated = malloc(size_initial * sizeof(char));
-	final_size = size_initial;
-	fill_alloc(string_formated, format, size_initial);
+	va_start(args, format);
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
+			p = choose_option(format[i + 1]);
+			if (p.flag == 1)
+			{
+				plus = p.print(args);
+				counter += plus + 1;
+				i += 1;
+				continue;
+			}
+		}
+		_putchar(format[i]);
+		counter++;
+	}
 
-	print_all(string_formated, size_initial);
-	free(string_formated);
-	return (final_size);
+	va_end(args);
+	_putchar('\0');
+	return (counter);
 }

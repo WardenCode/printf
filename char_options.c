@@ -29,11 +29,11 @@ int print_num(void *arg)
 		count++;
 	}
 	write(1, &holder, count);
-	return(1);
+	return (1);
 }
 
 /**
- * op_sub - ubstract b to a
+ * print_char - Print a char
  *
  * @arg: Char to print
  *
@@ -47,7 +47,7 @@ int print_char(void *arg)
 }
 
 /**
- * ptrint_str - Print a string;
+ * print_str - Print a string;
  *
  * @arg: The string to print
  *
@@ -96,13 +96,15 @@ int print_int(void *arg)
 		count++;
 	}
 	write(1, &holder, count);
-	return(1);
+	return (1);
 }
 
 /**
  * print_percent- Print a percentaje symbol
  *
- * Return: 1;
+ * @arg: unused pointer
+ *
+ * Return: 0;
  */
 
 int print_percent(void *arg __attribute__((unused)))

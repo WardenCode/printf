@@ -47,6 +47,12 @@ int print_str(va_list args)
 	char *argument = va_arg(args, char *);
 	int i = 0;
 
+	if (argument == NULL)
+	{
+		write(1, "(null)", 6);
+		return (5);
+	}
+
 	while (argument[i])
 	{
 		_putchar(argument[i]);

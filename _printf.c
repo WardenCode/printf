@@ -102,8 +102,8 @@ int _printf(const char *format, ...)
 	print_operation_t p = {0, NULL};
 	va_list args;
 
-	if (!format)
-		write(1, "You must to enter an string (NOT NULL)", 39);
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)

@@ -3,60 +3,48 @@
 /**
  * print_num - Print a num;
  *
- * @arg: Num to print
+ * @args: va_list like argument
  *
  * Return: The length of the num.
  */
 
-int print_num(void *arg)
+int print_num(va_list args)
 {
-	int *argument = arg;
-	int number = argument[0];
-	int holder = 0;
-	int count = 0;
+	int num = va_arg(args, int);
+	int counter = 0;
 
-	if (number < 0)
-	{
-		count++;
-		number *= -1;
-	}
-
-	holder = number;
-
-	while (number != 0)
-	{
-		number /= 10;
-		count++;
-	}
-	write(1, &holder, count);
-	return (1);
+	counter = count_number(num);
+	print_number(num);
+	return (counter);
 }
 
 /**
  * print_char - Print a char
  *
- * @arg: Char to print
+ * @args: va_list like argument
  *
  * Return: 1.
  */
 
-int print_char(void *arg)
+int print_char(va_list args)
 {
-	write(1, &arg, 1);
-	return (1);
+	char character = va_arg(args, int);
+
+	write(1, &character, 1);
+	return (0);
 }
 
 /**
  * print_str - Print a string;
  *
- * @arg: The string to print
+ * @args: va_list like argument
  *
  * Return: The length of an string
  */
 
-int print_str(void *arg)
+int print_str(va_list args)
 {
-	char *argument = arg;
+	char *argument = va_arg(args, char *);
 	int i = 0;
 
 	while (argument[i])
@@ -70,44 +58,30 @@ int print_str(void *arg)
 /**
  * print_int - Print a int
  *
- * @arg: The int to print
+ * @args: va_list like argument
  *
  * Return: The length of int
  */
 
-int print_int(void *arg)
+int print_int(va_list args)
 {
-	int *argument = arg;
-	int number = argument[0];
-	int holder = 0;
-	int count = 0;
+	int num = va_arg(args, int);
+	int counter = 0;
 
-	if (number < 0)
-	{
-		count++;
-		number *= -1;
-	}
-
-	holder = number;
-
-	while (number != 0)
-	{
-		number /= 10;
-		count++;
-	}
-	write(1, &holder, count);
-	return (1);
+	counter = count_number(num);
+	print_number(num);
+	return (counter);
 }
 
 /**
- * print_percent- Print a percentaje symbol
+ * print_percent- Print a percentage symbol
  *
- * @arg: unused pointer
+ * @args: va_list like argument
  *
  * Return: 0;
  */
 
-int print_percent(void *arg __attribute__((unused)))
+int print_percent(va_list args __attribute__((unused)))
 {
 	_putchar('%');
 	return (0);

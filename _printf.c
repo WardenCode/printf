@@ -99,7 +99,6 @@ print_operation_t choose_option(char s)
 int _printf(const char *format, ...)
 {
 	int i = 0, counter = 0, plus = 0;
-	void *tmp = NULL;
 	print_operation_t p = {0, NULL};
 	va_list args;
 
@@ -114,8 +113,7 @@ int _printf(const char *format, ...)
 			p = choose_option(format[i + 1]);
 			if (p.flag == 1)
 			{
-				tmp = va_arg(args, void *);
-				plus = p.print(tmp);
+				plus = p.print(args);
 				counter += plus + 1;
 				i += 1;
 				continue;
@@ -124,6 +122,7 @@ int _printf(const char *format, ...)
 		_putchar(format[i]);
 		counter++;
 	}
+
 	va_end(args);
 	_putchar('\0');
 	return (counter);

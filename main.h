@@ -9,24 +9,26 @@
 typedef struct special_chars
 {
     int op;
-    int (*operation)(void *arg);
+    int (*operation)(va_list args);
 } special_chars_t;
 
 typedef struct print_operation
 {
     int flag;
-    int (*print)(void *arg);
+    int (*print)(va_list args);
 } print_operation_t;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
 int _strlen(const char *string);
 int _strcmp(char *s1, char *s2);
+int count_number(int n);
+void print_number(int n);
 print_operation_t choose_option(char s);
-int print_num(void *arg);
-int print_char(void *arg);
-int print_str(void *arg);
-int print_int(void *arg);
-int print_percent(void *arg);
+int print_num(va_list args);
+int print_char(va_list args);
+int print_str(va_list args);
+int print_int(va_list args);
+int print_percent(va_list args);
 
 #endif

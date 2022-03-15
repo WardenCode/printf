@@ -38,6 +38,9 @@ int count_number(int n)
 {
 	int counter = 0;
 
+	if (n == 0)
+		return (0);
+
 	if (n < 0)
 	{
 		n *= -1;

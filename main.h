@@ -49,7 +49,7 @@ int print_percent(va_list args);
 int print_rot13(va_list args);
 char *rot13(char *str);
 int print_binary(va_list args);
-void print_num_binary(int n);
+void print_num_binary(unsigned int n, unsigned int *counter);
 void print_number(int n);
 int print_str_rev(va_list args);
 void print_rev(char *s);

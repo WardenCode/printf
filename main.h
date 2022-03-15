@@ -52,5 +52,6 @@ int print_binary(va_list args);
 void print_num_binary(int n);
 void print_number(int n);
 int print_str_rev(va_list args);
+void print_rev(char *s);
 
 #endif

@@ -70,6 +70,9 @@ print_operation_t choose_option(char s)
 		{'s', print_str},
 		{'i', print_int},
 		{'%', print_percent},
+		{'b', print_binary},
+		{'R', print_rot13},
+		{'r', print_str_rev},
 		{'\0', NULL}
 	};
 	int i = 0;

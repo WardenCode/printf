@@ -62,3 +62,67 @@ int count_number(int n)
 
 	return (counter - 1);
 }
+
+/**
+ * rot13 - funcion that encodes a string using rot13
+ *
+ * @str: string to be convert
+ *
+ * Return: pointer direction
+ */
+
+char *rot13(char *str)
+{
+	int i;
+
+	for (i = 0; (*(str + i) != '\0'); i++)
+	{
+		while ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
+		{
+			if ((str[i] >= 'a' && str[i] <= 'm') || (str[i] >= 'A' && str[i] <= 'M'))
+			{
+				str[i] = str[i] + 13;
+				break;
+			}
+			str[i] = str[i] - 13;
+			break;
+		}
+	}
+	return (str);
+}
+
+/**
+ * print_num_binary - function that print number in binary
+ *
+ * @n: number to convert
+ *
+ */
+
+void print_num_binary(int n)
+{
+	unsigned int new_number = n;
+
+	if (new_number != 2 || new_number != 3)
+		print_num_binary(new_number / 2);
+	else
+		_putchar((new_number / 2) + '0');
+
+	_putchar((new_number % 2) + '0');
+}
+
+/**
+ * _print_rev_recursion - function that prints a string in reverse
+ * @s: pointer to string
+ */
+
+void _print_rev_recursion(char *s)
+{
+	char *rec;
+
+	if (*s != '\0')
+	{
+		rec = s + 1;
+		_print_rev_recursion(rec);
+		_putchar(*s);
+	}
+}

@@ -92,12 +92,7 @@ int print_str_rev(va_list args)
 		i++;
 
 	counter = i - 1;
-
-	while (i >= 0)
-	{
-		_putchar(argument[i]);
-		i--;
-	}
+	print_rev(argument);
 
 	return (counter);
 }

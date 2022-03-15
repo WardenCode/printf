@@ -109,3 +109,19 @@ void print_num_binary(int n)
 
 	_putchar((new_number % 2) + '0');
 }
+
+/**
+ * print_rev - function that prints a string in reverse
+ * @s : variable to pointer
+ */
+
+void print_rev(char *s)
+{
+	int i = 0, j = 0;
+
+	while (*(s + i) != '\0')
+		i++;
+
+	for (j = i - 1; j >= 0; j--)
+		_putchar(s[j]);
+}

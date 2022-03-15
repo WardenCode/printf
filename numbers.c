@@ -109,20 +109,3 @@ void print_num_binary(int n)
 
 	_putchar((new_number % 2) + '0');
 }
-
-/**
- * _print_rev_recursion - function that prints a string in reverse
- * @s: pointer to string
- */
-
-void _print_rev_recursion(char *s)
-{
-	char *rec;
-
-	if (*s != '\0')
-	{
-		rec = s + 1;
-		_print_rev_recursion(rec);
-		_putchar(*s);
-	}
-}

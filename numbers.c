@@ -96,22 +96,23 @@ char *rot13(char *str)
  *
  * @n: number to convert
  *
+ * @counter: Counter of the number of binary digits that are printed
  */
 
-void print_num_binary(int n)
+void print_num_binary(unsigned int n, unsigned int *counter)
 {
-	unsigned int new_number = n;
-
-	if (new_number != 2 || new_number != 3)
-		print_num_binary(new_number / 2);
+	if (n != 2 && n != 3)
+		print_num_binary(n / 2, counter);
 	else
-		_putchar((new_number / 2) + '0');
+		_putchar((n / 2) + '0');
 
-	_putchar((new_number % 2) + '0');
+	_putchar((n % 2) + '0');
+	*counter += 1;
 }
 
 /**
  * print_rev - function that prints a string in reverse
+ *
  * @s : variable to pointer
  */
 

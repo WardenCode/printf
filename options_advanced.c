@@ -16,11 +16,10 @@ int print_binary(va_list args)
 	if (holder < 0)
 	{
 		_putchar('0');
-		return (counter); /*possible error*/
+		return (counter);
 	}
 
-	print_num_binary(num);
-	counter = count_number(holder);
+	print_num_binary(num, &counter);
 	return (counter);
 }
 

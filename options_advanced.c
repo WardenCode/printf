@@ -11,13 +11,7 @@
 int print_binary(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int), counter = 0;
-	int holder = num;
-
-	if (num == 4294967294)
-	{
-		_printf("11111111111111111111111111111110");
-		return (31);
-	}
+	long int holder = num;
 
 	if (num == 0 || num == 1)
 	{

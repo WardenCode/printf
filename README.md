@@ -32,6 +32,74 @@ Format generators are a format with which we tell the function to take the argum
 ## Bugs
 - **%b** : The specifier %b doesn't work all correctly
 
+## Examples
+
+```c
+#include "main.h"
+
+int main (void)
+{
+    _printf ("I am a character %s", 'F');
+
+    return (0);
+}
+```
+
+**Output** : `I am a character F`
+
+
+```c
+#include "main.h"
+
+int main (void)
+{
+
+    _printf ("%s", "STRING");
+
+    return (0);
+}
+```
+**Output** : `STRING`
+
+```c
+#include "main.h"
+
+int main (void)
+{
+
+    _printf ("I am percentage %%");
+
+    return (0);
+}
+```
+**Output** : `I am a percentage %`
+
+```c
+#include "main.h"
+
+int main (void)
+{
+
+    _printf ("I am an integer %i", 10);
+
+    return (0);
+}
+```
+**Output** : `I am an integer 10`
+
+```c
+#include "main.h"
+
+int main (void)
+{
+
+    _printf ("I am a binary %b", 54);
+
+    return (0);
+}
+```
+**Output** : `I am a binary 110110`
+
 ## Authors
 - **Diego Linares Castillo**. (diegojeanluck@hotmail.com)
 - **Luis Manrique Chávez**. (luismanrique158158@gmail.com)

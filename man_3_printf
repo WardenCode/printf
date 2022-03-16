@@ -28,9 +28,6 @@ Print a character passed as parameter.
 .B %s
 Prints a string.
 
-.B %S
-Prints a string of characters and the number in hexadecimal of a special character that is written like this '\x' according to the ASCII table.
-
 .B %%
 Print a percentage symbol.
 
@@ -42,6 +39,37 @@ Prints a signed number (int).
 
 .B %b
 Converts the unsigned integer to binary and prints it.
+
+.B %r
+Print the inverted string.
+
+.B %R
+Use ROT13 to converts the letters with the thirteenth letter forward of the alphabet.
+
+.SH EXAMPLE
+.nf
+#include "main.h"
+
+int main (void)
+{
+	_printf ("I am a character %s", 'F');
+	
+	_printf ("%s", string);
+
+	_printf ("I am percentage %%");
+
+	_printf ("I am an integer %i", 10);
+
+	_printf ("I am a binary %b", 54);
+
+	return (0);
+}
+.ni
+
+.SH FUTURE FEATURES
+
+.B %S
+Prints a string of characters and the number in hexadecimal of a special character that is written like this '\x' according to the ASCII table.
 
 .B %u
 Prints an unsigned decimal number.
@@ -58,13 +86,7 @@ Unsigned hex conversion to uppercase.
 .B %p
 Print a memory address(pointer).
 
-.B %r
-Print the inverted string.
-
-.B %R
-Use ROT13 to converts the letters with the thirteenth letter forward of the alphabet.
-
-.SH FLAG CHAR
+.SH FLAG CHAR (FUTURE FEATURES)
 .B +
 Print the '+' symbol in front of the positive number occupying one space wide.
 
@@ -80,27 +102,9 @@ Fill in zero to the left.
 .B -
 Justify left.
 
-.SH EXAMPLE
-.nf
-#include "main.h"
+.SH BUGS
 
-int main (void)
-{
-	_printf ("I am a character %s", 'F');
-	
-	_printf ("%s", string);
-
-	_printf ("I am percentage %%");
-
-	_printf ("I am an integer %i", 10);
-
-	_printf ("The number is: %05d", 3190);
-
-	_printf ("I am a binary %b", 54);
-
-	return (0);
-}
-.ni
+The specifier %b doesn't work all correctly
 
 .SH SEE ALSO
 printf (3)

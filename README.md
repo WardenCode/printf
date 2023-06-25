@@ -12,13 +12,16 @@ A string with / without specifiers to print and gives the output formatted.
 The string is printed character by character and when founds a '%' with a letter calls one of that parameters and print them instead the specifiers.
 
 ## Table of Content
-* [Format Specifiers](#format-specifiers)
-* [Usage](#usage)
-* [Future features](#future-features)
-* [Bugs](#bugs)
-* [Examples](#examples)
-* [Authors](#authors)
-* [License](#license)
+- [Recreation printf Function](#recreation-printf-function)
+  - [Description](#description)
+  - [Table of Content](#table-of-content)
+  - [Usage](#usage)
+  - [Format Specifiers](#format-specifiers)
+  - [Future Features](#future-features)
+  - [Bugs](#bugs)
+  - [Examples](#examples)
+  - [Authors](#authors)
+  - [License](#license)
 
 ## Usage
 

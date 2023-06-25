@@ -13,32 +13,51 @@ The string is printed character by character and when founds a '%' with a letter
 
 ## Table of Content
 * [Format Specifiers](#format-specifiers)
+* [Usage](#usage)
 * [Future features](#future-features)
 * [Bugs](#bugs)
 * [Examples](#examples)
 * [Authors](#authors)
 * [License](#license)
 
+## Usage
+
+Like the according main.h library version:
+
+```c
+int _printf(const char *format, ...);
+```
+
 ## Format Specifiers
 
 Format generators are a format with which we tell the function to take the arguments ​​according to the indicated type.
-- **%c** : Print a character passed as parameter.
-- **%s** : Prints a string.
-- **%%**: Print a percentage symbol.
-- **%d** : Prints a signed decimal number.
-- **%i** : Prints a signed number (int).
-- **%b** : Converts the unsigned integer to binary and prints it.
-- **%r** : Print the inverted string.
-- **%R** : Use ROT13 to converts the letters with the thirteenth letter forward of the alphabet.
+
+A format specifier follows this prototype: `%type`
+The following format specifiers are supported:
+
+| Type   | Output |
+|--------|--------|
+| c      | Print a character passed as parameter |
+| s      | Prints a string |
+| %      | Print a percentage symbol |
+| d      | Prints a signed decimal number |
+| i      | Prints a signed number (int) |
+| b      | Converts the unsigned integer to binary and prints it |
+| r      | Print the inverted string |
+| R      | Use ROT13 to converts the letters with the thirteenth letter forward of the alphabet. |
 
 ## Future Features
-- **%u** : Prints an unsigned decimal number.
-- **%o** : Prints the octal unsigned integer conversion.
-- **%x** : Unsigned hex conversion to lowercase.
-- **%X** : Unsigned hex conversion to uppercase.
-- **%p** : Print a memory address(pointer).
+
+| Type   | Output |
+|--------|--------|
+| u      | Prints an unsigned decimal number |
+| o      | Prints the octal unsigned integer conversion |
+| x      | Unsigned hex conversion to lowercase |
+| X      | Unsigned hex conversion to uppercase |
+| p      | Print a memory address(pointer) |
 
 ## Bugs
+
 - **%b** : The specifier %b doesn't work all correctly
 
 ## Examples
